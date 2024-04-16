@@ -2,6 +2,7 @@ import './Register.css'
 import { useState } from 'react';
 import axios from 'axios';
 import { remoteHostURL } from '../apiClient'
+import { useNavigate } from 'react-router-dom';
 
 
 function Register() {
@@ -10,17 +11,21 @@ function Register() {
     const [firstName, setFirst] = useState('');
     const [lastName, setLast] = useState('');
     const [confirm, setConfirm] = useState('');
+    const nav = useNavigate();
 
     const handleSubmit = async (event: { preventDefault: () => void; }) => {
         event.preventDefault();
         try {
-            const response = await axios.post(`${remoteHostURL}/login`, {
+            const response = await axios.post(`${remoteHostURL}/register`, {
                 username: username,
                 firstname: firstName,
                 lastname: lastName,
                 password: password
             });
-            console.log(response);
+            localStorage.setItem('userId', response.data.newRoute._id);
+            localStorage.setItem('token', response.data.token);
+            localStorage.setItem('name', response.data.user.firstname);
+            nav('/logged/home');
         } catch(err) {
             console.log(err);
         }
