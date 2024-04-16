@@ -1,0 +1,85 @@
+#navlinks{
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+    align-items: center;
+    border-bottom: solid 1px cadetblue;
+    margin-bottom: 100px;
+    
+}
+
+h1 {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 30px;
+    color: cadetblue;
+    align-items: center;
+}
+
+p {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 20px;
+    color: cadetblue;
+    align-items: center;
+}
+
+Link {
+    text-decoration: none;
+}
+
+.btn {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background-color: cadetblue;
+    width: 80px;
+    height: 60px;
+    text-align: center;
+    border-radius: 20%;
+}
+
+.btn:hover {
+    background-color: aliceblue;
+    border: solid 1px cadetblue;
+    cursor: pointer;
+}
+
+#btn {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background-color: aliceblue;
+    width: 80px;
+    height: 60px;
+    text-align: center;
+    border-radius: 20%;
+    border: solid 1px cadetblue;
+}
+
+#btn:hover {
+    background-color: cadetblue;
+    cursor: pointer;
+}
+
+#reg {
+    color: cadetblue;
+    align-items: center;
+}
+
+#reg:hover {
+    color: aliceblue;
+    cursor: pointer;
+}
+
+#login {
+    color: aliceblue;
+    align-items: center;
+}
+
+#login:hover {
+    color: cadetblue;
+    cursor: pointer;
+}
+
+#flexlife {
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+    align-items: center;
+    width: 200px;
+}

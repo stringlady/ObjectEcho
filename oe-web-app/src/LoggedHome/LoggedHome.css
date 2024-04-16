@@ -1,0 +1,34 @@
+#enters {
+    flex-wrap: wrap;
+    flex-direction: row;
+    display: flex;
+    justify-content: space-around;
+}
+
+#enters-a {
+    text-align: center;
+    width: 300px;
+}
+
+#new {
+    background-color: cadetblue;
+  border: solid 1px cadetblue;
+  color: aliceblue;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 10%;
+
+}
+
+#hide {
+    display: none;
+}
+
+#new:hover {
+    color: cadetblue;
+    background-color: aliceblue;
+    cursor: pointer;
+}

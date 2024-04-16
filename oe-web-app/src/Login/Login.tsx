@@ -18,7 +18,7 @@ function Login() {
             });
             localStorage.setItem('userId', response.data.user._id);
             localStorage.setItem('token', response.data.token);
-            localStorage.setItem('name', response.data.user.firstname);
+            localStorage.setItem('name', response.data.user.username);
             nav('/logged/home');
         } catch(err) {
             console.log(err);

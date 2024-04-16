@@ -51,21 +51,13 @@ const entrySchema = new mongoose.Schema({
   call: String,
   description: String,
   time: Date,
-  userid: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'user'
-  }
+  userid: String,
+  username: String
 }, {collection: 'entries'})
 
 const commentSchema = new mongoose.Schema({
-  userid: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'user'
-  },
-  entryUserId: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'user'
-  },
+  userid: String,
+  entryUserId: String,
   comment: String
 }, {collection: 'comments'})
 
@@ -96,6 +88,75 @@ app.post('/register', async (req, res) => {
   }
 });
 
+app.get('/entries', authenticateToken, async (req, res) => {
+  try {
+    const data = await Entry.find();
+
+    res.status(201).json(data);
+  } catch (err) {
+    res.status(400).json({ message: err.message });
+  }
+});
+
+app.get('/entries/:id', authenticateToken, async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const data = await Entry.find({ userid: id });
+
+    res.status(201).json(data);
+  } catch (err) {
+    res.status(400).json({ message: err.message });
+  }
+});
+
+app.post('/entries', authenticateToken, async (req, res) => {
+  const route = new Entry({
+    name: req.body.name,
+    call: req.body.call,
+    description: req.body.description,
+    time: req.body.time,
+    userid: req.body.userid,
+    username: req.body.username
+  });
+
+  try {
+    const newRoute = await route.save();
+
+    res.status(201).json({ newRoute });
+  } catch (err) {
+    res.status(400).json({ message: err.message });
+  }
+});
+
+app.post('/comments', authenticateToken, async (req, res) => {
+  const route = new Comment({
+    userid: req.body.userid,
+    entryUserId: req.body.entryUserId,
+    comment: req.body.comment
+  });
+
+  try {
+    const newRoute = await route.save();
+
+    res.status(201).json({ newRoute });
+  } catch (err) {
+    res.status(400).json({ message: err.message });
+  }
+});
+
+app.get('/comments/:id', authenticateToken, async (req, res) => {
+  const {id} = req.params;
+
+  try {
+    const data = await Comment.find({userid: id});
+
+    res.status(201).json(data);
+  } catch (err) {
+    res.status(400).json({ message: err.message });
+  }
+});
+
 app.post('/login', async (req, res) => {
   const { username, password } = req.body;
 
@@ -120,12 +181,24 @@ app.post('/login', async (req, res) => {
   }
 });
 
-app.get('/users', async (req, res) => {
+app.get('/users', authenticateToken, async (req, res) => {
   try {
     const routes = await User.find();
     res.json(routes);
   } catch (err) {
     res.status(500).json({ message: err.message });
+  }
+});
+
+app.get('/users/:id', authenticateToken, async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const data = await User.find({ _id: id });
+
+    res.status(201).json(data);
+  } catch (err) {
+    res.status(400).json({ message: err.message });
   }
 });
 
