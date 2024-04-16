@@ -52,7 +52,7 @@ function LoggedHome() {
         const res = await axios.post(`${remoteHostURL}/comments`, {
             userid: id,
             entryUserId: userId,
-            comment: comment
+            comment: comment[id]
         }, config)
         window.location.reload();
     } catch (err) {
