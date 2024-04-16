@@ -1,0 +1,21 @@
+h2 {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 30px;
+    color: cadetblue;
+    align-items: center;
+}
+
+#home {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+
+#desc {
+    width: 800px;
+    border: solid 1px cadetblue;
+    border-radius: 5%;
+    padding: 50px;
+}

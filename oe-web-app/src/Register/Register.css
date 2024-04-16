@@ -1,0 +1,30 @@
+#form {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    
+}
+
+#log1 {
+    text-align: center;
+    margin-top: 150px;
+}
+
+#reger:hover {
+    text-decoration: underline;
+}
+
+#whole {
+    border: solid 1px cadetblue;
+    background-color: bisque;
+}
+
+#btn-log {
+    background-color: cadetblue;
+    color:aliceblue;
+    margin-top: 20px;
+    width: 80px;
+    height: 40px;
+}
