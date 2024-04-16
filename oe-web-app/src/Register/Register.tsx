@@ -47,10 +47,12 @@ function Register() {
                         size={40}/>
                 <p>Password:</p>
                 <input value={password}
+                type='password'
                         onChange={(e) => setPassword(e.target.value)}
                         size={40}/>
                 <p>Confirm Password</p>
                 <input value={confirm}
+                type='password'
                         onChange={(e) => setConfirm(e.target.value)}
                         size={40}/>
                 <button type='submit' id="btn-log">Register</button>

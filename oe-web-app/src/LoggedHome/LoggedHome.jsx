@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom';
 
 function LoggedHome() {
     const [entries, setEntries] = useState([]);
-    const [comment, setComment] = useState('');
+    const [comment, setComment] = useState({});
     const nav = useNavigate();
 
     useEffect(() => {
@@ -22,11 +22,21 @@ function LoggedHome() {
         const fetchEntries = async () => {
             const res = await axios.get(`${remoteHostURL}/entries`, config);
             setEntries(res.data);
+            const initialComments = res.data.reduce((acc, entry) => {
+                acc[entry.userid] = '';
+                return acc;
+            }, {});
+            setComment(initialComments);
         }
 
 
         fetchEntries();
     }, [])
+
+    const handleCommentChange = (id, value) => {
+        // Update the comment state for the specific entry
+        setComment({ ...comment, [id]: value });
+    };
 
     
 
@@ -68,8 +78,8 @@ function LoggedHome() {
                     <form onSubmit={(event) => handleSubmit(event, e.userid)}>
                     <textarea rows={5}
                             cols={18}
-                        value={comment}
-                        onChange={(e) => setComment(e.target.value)}/>
+                            value={comment[e.userid]}
+                            onChange={(event) => handleCommentChange(e.userid, event.target.value)}/>
                     <br/>
                     <br/>
                     <button type='submit' id="new">Add Comment</button>

@@ -33,6 +33,7 @@ function Login() {
                         size={40}/>
                 <p>Password:</p>
                 <input value={password}
+                type='password'
                         onChange={(e) => setPassword(e.target.value)}
                         size={40}/>
                 <button id="btn-log">Login</button>
