@@ -24,7 +24,7 @@ function Register() {
             });
             localStorage.setItem('userId', response.data.newRoute._id);
             localStorage.setItem('token', response.data.token);
-            localStorage.setItem('name', response.data.user.username);
+            localStorage.setItem('name', response.data.newRoute.username);
             nav('/logged/home');
         } catch(err) {
             console.log(err);
