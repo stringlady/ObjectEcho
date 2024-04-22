@@ -20,7 +20,7 @@ function LoggedHome() {
         };
 
         const fetchEntries = async () => {
-            const res = await axios.get(`${remoteHostURL}/entries`, config);
+            const res = await axios.get(`${remoteHostURL}/entries`);
             setEntries(res.data);
             const initialComments = res.data.reduce((acc, entry) => {
                 acc[entry.userid] = '';
@@ -53,7 +53,7 @@ function LoggedHome() {
             userid: id,
             entryUserId: userId,
             comment: comment[id]
-        }, config)
+        })
         window.location.reload();
     } catch (err) {
         console.log(err)

@@ -88,7 +88,7 @@ app.post('/register', async (req, res) => {
   }
 });
 
-app.get('/entries', authenticateToken, async (req, res) => {
+app.get('/entries',  async (req, res) => {
   try {
     const data = await Entry.find();
 
@@ -98,7 +98,7 @@ app.get('/entries', authenticateToken, async (req, res) => {
   }
 });
 
-app.get('/entries/:id', authenticateToken, async (req, res) => {
+app.get('/entries/:id', async (req, res) => {
   const { id } = req.params;
 
   try {
@@ -110,7 +110,7 @@ app.get('/entries/:id', authenticateToken, async (req, res) => {
   }
 });
 
-app.post('/entries', authenticateToken, async (req, res) => {
+app.post('/entries', async (req, res) => {
   const route = new Entry({
     name: req.body.name,
     call: req.body.call,
@@ -129,7 +129,7 @@ app.post('/entries', authenticateToken, async (req, res) => {
   }
 });
 
-app.post('/comments', authenticateToken, async (req, res) => {
+app.post('/comments', async (req, res) => {
   const route = new Comment({
     userid: req.body.userid,
     entryUserId: req.body.entryUserId,
@@ -145,7 +145,7 @@ app.post('/comments', authenticateToken, async (req, res) => {
   }
 });
 
-app.get('/comments/:id', authenticateToken, async (req, res) => {
+app.get('/comments/:id', async (req, res) => {
   const {id} = req.params;
 
   try {
@@ -181,7 +181,7 @@ app.post('/login', async (req, res) => {
   }
 });
 
-app.get('/users', authenticateToken, async (req, res) => {
+app.get('/users', async (req, res) => {
   try {
     const routes = await User.find();
     res.json(routes);
@@ -190,7 +190,7 @@ app.get('/users', authenticateToken, async (req, res) => {
   }
 });
 
-app.get('/users/:id', authenticateToken, async (req, res) => {
+app.get('/users/:id', async (req, res) => {
   const { id } = req.params;
 
   try {

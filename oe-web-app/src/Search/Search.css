@@ -1,0 +1,29 @@
+#searchbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#searchbar input {
+    height: 50px;
+    width: 400px;
+    border: solid 2px black;
+    border-radius: 2%;
+}
+
+#glass {
+    background-color: cadetblue;
+    padding: 15px;
+    border: solid 2px black;
+}
+
+#search {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+#query {
+    width: 200px;
+}

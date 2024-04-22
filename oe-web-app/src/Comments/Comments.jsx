@@ -13,7 +13,7 @@ function Comments({id}) {
             };
     
             try {
-                const res = await axios.get(`${remoteHostURL}/comments/${id}`, config);
+                const res = await axios.get(`${remoteHostURL}/comments/${id}`);
                 setNew(res.data)
             } catch(err) {
                 console.log(err)

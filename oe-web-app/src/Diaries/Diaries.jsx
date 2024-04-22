@@ -18,7 +18,7 @@ function Diaries() {
             headers: { Authorization: `Bearer ${token}` }
         };
         const fetchEntries = async () => {
-            const res = await axios.get(`${remoteHostURL}/entries/${userId}`, config);
+            const res = await axios.get(`${remoteHostURL}/entries/${userId}`);
             setEntries(res.data)
             console.log(res.data)
 
