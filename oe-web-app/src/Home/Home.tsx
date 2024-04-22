@@ -5,6 +5,7 @@ function Home() {
     return(
         <div>
             <Nav/>
+            
             <div id="home">
             <span id="desc">
             <h2>Welcome to ObjectEcho</h2>
@@ -37,6 +38,18 @@ function Home() {
                 </p></span>
             <br/>
             </div>
+            <div id="home">
+            <span id="desc">
+            <h2>Words of Jane Bennet</h2>
+            <p>"In what follows, I, too, will feature the negative power or recalcitrance
+of things. But I will also seek to highlight a positive, productive power of
+their own. And, instead of focusing on collectives conceived primarily as conglomerates of human designs and practices (“discourse”), I will
+highlight the active role of nonhuman materials in public life. In short, I
+will try to give voice to a thing-power."
+                </p></span>
+            <br/>
+            </div>
+            
         </div>
     )
 }
