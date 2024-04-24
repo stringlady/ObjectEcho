@@ -110,6 +110,18 @@ app.get('/entries/:id', async (req, res) => {
   }
 });
 
+app.get('/entries/id/:id', async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const data = await Entry.findById(id);
+
+    res.status(201).json(data);
+  } catch (err) {
+    res.status(400).json({ message: err.message });
+  }
+});
+
 app.post('/entries', async (req, res) => {
   const route = new Entry({
     name: req.body.name,
@@ -181,6 +193,18 @@ app.post('/login', async (req, res) => {
   }
 });
 
+app.get('/users/:id', async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const data = await User.findById(id);
+
+    res.status(201).json(data);
+  } catch (err) {
+    res.status(400).json({ message: err.message });
+  }
+});
+
 app.get('/users', async (req, res) => {
   try {
     const routes = await User.find();
@@ -190,11 +214,18 @@ app.get('/users', async (req, res) => {
   }
 });
 
-app.get('/users/:id', async (req, res) => {
+app.put('/users/:id', async (req, res) => {
   const { id } = req.params;
+  const updatedData = {
+    username: req.body.username,
+    firstname: req.body.firstname,
+    lastname: req.body.lastname,
+    password: req.body.password
+  }
 
   try {
-    const data = await User.find({ _id: id });
+    const data = await User.findByIdAndUpdate(id, updatedData);
+    await Entry.findOneAndUpdate({userid: id}, {username: req.body.username})
 
     res.status(201).json(data);
   } catch (err) {

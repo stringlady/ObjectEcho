@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { remoteHostURL } from '../apiClient';
 import LoggedNav from '../LoggedNav/LoggedNav';
+import { Link } from 'react-router-dom';
 
 function Search() {
     const [searched, setSearched] = useState([]);
@@ -52,8 +53,8 @@ function Search() {
             <br/>
             <div id="search">
         {searched.map((s, id) => (
-            
-            <Query name={s.name} call={s.call} desc={s.description}/>
+            <Query id={s._id} name={s.name} call={s.call} desc={s.description}/>
+
             
         ))}
         </div>
@@ -64,7 +65,7 @@ function Search() {
 function Query(props) {
     return(
         <div id="query">
-            <p>{props.name}</p>
+            <Link style={{ textDecoration: 'none' }} to={`/details/${props.id}`}><p>{props.name}</p></Link>
             <p>{props.call}</p>
             <p>{props.desc}</p>
         </div>

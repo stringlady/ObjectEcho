@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { remoteHostURL } from "../apiClient";
+import './Comments.css'
 
 function Comments({id}) {
     const [newComment, setNew] = useState([]);
@@ -24,9 +25,9 @@ function Comments({id}) {
     }, [id])
 
     return(
-        <div>
+        <div id="comments">
             {newComment.map((c, index) => (
-                <p key={index}>{c.comment}</p>
+                <div id="des"><p key={index}>{c.comment}</p></div>
             ))}
         </div>
     )

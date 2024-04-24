@@ -5,7 +5,7 @@ import { BsJournalBookmark } from "react-icons/bs";
 function Nav() {
     return (
         <div id='navlinks'>
-            <h1><BsJournalBookmark /> ObjectEcho</h1>
+            <Link style={{ textDecoration: 'none' }} to='/'><h1><BsJournalBookmark /> ObjectEcho</h1></Link>
             <Link style={{ textDecoration: 'none' }} to='/search'><p id='login'></p><h1>Search</h1></Link>
             <div id='flexlife'>
             <div className='btn'>
